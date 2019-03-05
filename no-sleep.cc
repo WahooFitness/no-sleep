@@ -23,8 +23,14 @@ void PreventSleep(const FunctionCallbackInfo<Value>& args) {
   args.GetReturnValue().Set(SetThreadExecutionState(ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_DISPLAY_REQUIRED) != NULL);
 }
 
+void AllowSleep(const FunctionCallbackInfo<Value>& args) {
+  Isolate* isolate = args.GetIsolate();
+  args.GetReturnValue().Set(SetThreadExecutionState(ES_CONTINUOUS) != NULL);
+}
+
 void Initialize(Local<Object> exports) {
   NODE_SET_METHOD(exports, "preventSleep", PreventSleep);
+  NODE_SET_METHOD(exports, "allowSleep", AllowSleep);
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
