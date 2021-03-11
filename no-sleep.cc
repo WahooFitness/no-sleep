@@ -1,5 +1,6 @@
 #ifdef WIN32 
 #include <napi.h>
+#include <winnt.h>
 
 Napi::Boolean PreventSleep(const Napi::CallbackInfo &info) {
   return Napi::Boolean::New(info.Env(), SetThreadExecutionState(ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_DISPLAY_REQUIRED) != NULL);
