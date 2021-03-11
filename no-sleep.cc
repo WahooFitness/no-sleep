@@ -16,6 +16,8 @@ Napi::Object Init(Napi::Env env, Napi::Object exports)
     Napi::Function::New(env, PreventSleep));
   exports.Set(Napi::String::New(env, "allowSleep"),
     Napi::Function::New(env, AllowSleep));
+
+  return exports;
 }
 
 NODE_API_MODULE(addon, Init)
