@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/WahooFitness",
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "node-gyp rebuild"
+    "install": "node-gyp rebuild",
+    "postpublish": "git push --follow-tags origin master",
+    "prepublishOnly": "node-gyp rebuild && npm version minor"
   },
   "author": "",
   "license": "ISC",
