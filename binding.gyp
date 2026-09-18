@@ -2,7 +2,13 @@
   "targets": [
     {
       "target_name": "nosleep",
-      "sources": [ "no-sleep.cc" ]
+      "conditions": [
+        ["OS=='win'", {
+          "sources": [ "no-sleep.cc" ]
+        }, {
+          "type": "none"
+        }]
+      ]
     }
   ]
 }
